@@ -11,6 +11,7 @@ export default class extends Backbone.View {
   get ui() {
     return {
       todo: '.js-todo',
+      todosList: '.js-todos-list',
       todoAdd: '.js-todo-add',
       filter: '.js-filter'
     };
@@ -40,17 +41,17 @@ export default class extends Backbone.View {
   }
 
   render() {
+    // Render todos layout
     this.$el.html(template());
 
+    // Set focus to input todo title filed
     this.$(this.ui.todo).focus();
 
-    const todos = this.collection.map((todo) => {
-      return new TodoItemView({
-        model: todo
-      }).render().$el;
-    });
-    this.$('.js-todos-list').append(todos);
+    // Rendering and show todos list
+    const todos = this.collection.map((todo) => new TodoItemView({ model: todo }).render().$el);
+    this.$(this.ui.todosList).append(todos);
 
+    // Apply icheck plugin
     $('input[type="checkbox"]').icheck({
       checkboxClass: 'icheckbox_minimal-blue',
       radioClass: 'iradio_minimal-blue'
