@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import Backbone from 'backbone';
 import TodoItemView from './todoItem';
 import template from '../templates/todosList.hbs';
@@ -7,14 +6,6 @@ export default class extends Backbone.View {
   constructor(props) {
     super(props);
     this.listenTo(this.collection, 'update reset', this.render);
-  }
-
-  get tagName() {
-    return 'ul';
-  }
-
-  get className() {
-    return 'todos-list';
   }
 
   get ui() {
@@ -59,6 +50,12 @@ export default class extends Backbone.View {
       }).render().$el;
     });
     this.$('.js-todos-list').append(todos);
+
+    $('input[type="checkbox"]').icheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass: 'iradio_minimal-blue'
+    });
+
     return this;
   }
 }

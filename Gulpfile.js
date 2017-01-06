@@ -97,7 +97,7 @@ gulp.task('server', ['build'], function() {
   });
 
   gulp.watch([config.src('app/**/*.js'), config.src('app/**/*.hbs')], ['scripts']);
-  gulp.watch(config.src('styles/**/*.less'), ['styles']);
+  gulp.watch(config.src(['styles/**/*.less', 'styles/**/*.css']), ['styles']);
   gulp.watch(config.src('index.html'), ['html']);
 })
 
