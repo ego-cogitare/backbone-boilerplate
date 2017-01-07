@@ -13,7 +13,6 @@
   "dependencies": {
     "jquery": "~2.0",
     "font-awesome": "fontawesome#^4.7.0",
-    "bootstrap": "^3.3.7",
-    "icheck": "https://github.com/ego-cogitare/iCheck.git"
+    "bootstrap": "^3.3.7"
   }
 }

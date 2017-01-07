@@ -4,6 +4,7 @@ import template from '../templates/todoItem.hbs';
 export default class extends Backbone.View {
   constructor(props) {
     super(props);
+    this.render();
   }
 
   get ui() {
@@ -30,6 +31,5 @@ export default class extends Backbone.View {
 
   render() {
     this.$el.html(template(this.model.attributes));
-    return this;
   }
 }

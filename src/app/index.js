@@ -4,7 +4,8 @@ import LayoutView from './views/layout';
 import Routes from './routes/index';
 
 const layoutView = window.layout = new LayoutView();
-$('#app').append(layoutView.render().$el);
+layoutView.render();
+$('#app').append(layoutView.$el);
 
 const routes = new Routes();
 Backbone.history.start();

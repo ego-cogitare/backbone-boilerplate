@@ -4,6 +4,9 @@ var sourcemaps = require('gulp-sourcemaps');
 var browserify = require('browserify');
 var babelify = require('babelify');
 var hbsfy = require('hbsfy');
+var fse = require('fs-extra');
+var fs = require('fs');
+var browserifyCSS = require('browserify-css');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
@@ -41,6 +44,21 @@ gulp.task('scripts', function() {
   });
 
   return bundler
+  .transform(browserifyCSS, {
+      autoInject: true,
+      minify: config.PRODUCTION,
+      global: true,
+      rootDir: '.',
+      processRelativeUrl: function(relativeUrl) {
+        const src = relativeUrl.replace(/node_modules/, 'vendors');
+        fse.copySync(relativeUrl, config.BUILD_DIR + src);
+        return '../' + src;
+      },
+      onFlush: function(options, done) {
+        fs.appendFileSync(config.BUILD_DIR + 'css/bundle.css', options.data);
+        done(null);
+      }
+    })
     .transform(babelify)
     .bundle()
     .pipe(source('bundle.js'))
@@ -96,8 +114,11 @@ gulp.task('server', ['build'], function() {
     }
   });
 
-  gulp.watch([config.src('app/**/*.js'), config.src('app/**/*.hbs')], ['scripts']);
-  gulp.watch(config.src(['styles/**/*.less', 'styles/**/*.css']), ['styles']);
+  gulp.watch([
+    config.src('app/**/*.js'),
+    config.src('app/**/*.hbs')
+  ], ['scripts']);
+  gulp.watch(config.src('styles/**/*.less'), ['styles']);
   gulp.watch(config.src('index.html'), ['html']);
 })
 

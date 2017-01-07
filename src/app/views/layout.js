@@ -1,11 +1,7 @@
 import Backbone from 'backbone';
-import Layout from '../templates/layout.hbs';
+import template from '../templates/layout.hbs';
 
 export default class LayoutView extends Backbone.View {
-
-  constructor(options) {
-    super(options);
-  }
 
   get className() {
     return 'hold-transition skin-blue sidebar-mini layout-boxed';
@@ -30,20 +26,19 @@ export default class LayoutView extends Backbone.View {
     switch (section) {
       case 'content':
         this.$('#content-wrapper').empty().append(
-          typeof view === 'string' ? view : view.render().$el
+          typeof view === 'string' ? view : view.$el
         );
       break;
 
       case 'sidebar':
         this.$('#sidebar-wrapper').empty().append(
-          typeof view === 'string' ? view : view.render().$el
+          typeof view === 'string' ? view : view.$el
         );
       break;
     }
   }
 
   render() {
-    this.$el.html(Layout());
-    return this;
+    this.$el.html(template());
   }
 }
