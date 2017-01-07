@@ -1,4 +1,6 @@
-import app from './js/app';
+import '../js/app';
+import '../styles/app.css';
+import '../styles/skins.css';
 import Backbone from 'backbone';
 import LayoutView from './views/layout';
 import Routes from './routes/index';

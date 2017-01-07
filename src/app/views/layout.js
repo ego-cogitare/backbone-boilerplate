@@ -1,5 +1,6 @@
 import Backbone from 'backbone';
 import template from '../templates/layout.hbs';
+import Notificaton from '../components/notification';
 
 export default class LayoutView extends Backbone.View {
 
@@ -22,17 +23,25 @@ export default class LayoutView extends Backbone.View {
     };
   }
 
-  show(section, view) {
+  show(section, data) {
     switch (section) {
       case 'content':
         this.$('#content-wrapper').empty().append(
-          typeof view === 'string' ? view : view.$el
+          typeof data === 'string' ? data : data.$el
         );
       break;
 
       case 'sidebar':
         this.$('#sidebar-wrapper').empty().append(
-          typeof view === 'string' ? view : view.$el
+          typeof data === 'string' ? data : data.$el
+        );
+      break;
+
+      case 'notification':
+        this.$('#notification-container').append(
+          new Notificaton({
+            model: new Backbone.Model(data)
+          }).$el
         );
       break;
     }
