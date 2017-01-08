@@ -70,4 +70,4 @@ type can be one of the following values:
 
 ![Screen01](src/img/screen-notifications.png?raw=true )
 ![Screen02](src/img/screen-popup.png?raw=true )
-![Screen03](app/img/screen-todo.png?raw=true )
+![Screen03](src/img/screen-todo.png?raw=true )
