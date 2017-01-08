@@ -35,7 +35,6 @@ var config = {
 
 var lessAutoprefixPlugin = new LessAutoprefixPlugin({ browsers: '> 1%' });
 
-
 gulp.task('scripts', function() {
   var bundler = browserify({
     entries: config.src('app/index.js'),

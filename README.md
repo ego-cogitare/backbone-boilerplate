@@ -35,9 +35,35 @@ To build a minified version of the applicaiton (production mode) simply run:
 $ gulp build
 ```
 
-### Things to do
+### Show popup dialog
 
- * Testing support
- * ~~Support for multiple environments~~
- * Documentation support
- * ~~Replace gulp-connect~~
+```javascript
+window.layout.show('popup', new PopupView({
+  model: new Backbone.Model({
+    title: <title>,
+    type: <type>
+  })
+}));
+```
+
+type can be one of the following values:
+*  - success
+*  - info
+*  - warning
+*  - error
+
+### Show notification dialog
+
+```javascript
+window.layout.show('notification', {
+  type: <type>,
+  title: <title>,
+  message: <message>
+});
+```
+
+type can be one of the following values:
+*  - success
+*  - info
+*  - warning
+*  - error
