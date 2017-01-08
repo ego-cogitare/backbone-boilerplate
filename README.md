@@ -1,6 +1,6 @@
-# Yet Another Backbone Boilerplate
+# Backbone AdminLTE ES6 boilerplate
 
-My attempt to create a boilerplate for starting a [Backbone.js](http://backbonejs.org/) web application development using modern technologies (as of Jun 2015):
+Backbone boilerplate for starting a [Backbone.js](http://backbonejs.org/) web application development using modern technologies (as of Jun 2017):
 
  * ECMAScript 6 - [Babel](https://babeljs.io/)
  * [Browserify](http://browserify.org)
@@ -47,10 +47,10 @@ window.layout.show('popup', new PopupView({
 ```
 
 type can be one of the following values:
-*  - success
-*  - info
-*  - warning
-*  - error
+*  success
+*  info
+*  warning
+*  error
 
 ### Show notification dialog
 
@@ -63,11 +63,12 @@ window.layout.show('notification', {
 ```
 
 type can be one of the following values:
-*  - success
-*  - info
-*  - warning
-*  - error
+*  success
+*  info
+*  warning
+*  error
 
+### UI screenshots
 ![Screen01](src/img/screen-notifications.png?raw=true )
 ![Screen02](src/img/screen-popup.png?raw=true )
 ![Screen03](src/img/screen-todo.png?raw=true )
