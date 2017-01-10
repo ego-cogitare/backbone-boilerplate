@@ -49,6 +49,10 @@ gulp.task('scripts', function() {
       global: true,
       rootDir: '.',
       processRelativeUrl: function(relativeUrl) {
+        const matches = relativeUrl.match(/[#\?]/);
+        if (matches) {
+          relativeUrl = relativeUrl.substr(0, matches.index);
+        }
         const src = relativeUrl.replace(/node_modules/, 'vendors');
         fse.copySync(relativeUrl, config.BUILD_DIR + src);
         return '../' + src;

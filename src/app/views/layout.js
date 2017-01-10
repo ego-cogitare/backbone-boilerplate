@@ -3,7 +3,12 @@ import template from '../templates/layout.hbs';
 import Notificaton from '../components/notification';
 import Popup from '../components/popup';
 
-export default class LayoutView extends Backbone.View {
+export default class extends Backbone.View {
+
+  constructor(props) {
+    super(props);
+    this.render();
+  }
 
   get className() {
     return 'hold-transition skin-blue sidebar-mini layout-boxed';
